@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      padding: 20px 10px;
+      margin: 0;
+    }
+    .payment-container {
+      width: 400px;
+      height: 700px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .header h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .form-section {
+      padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .form-section::-webkit-scrollbar {
+      display: none;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input:focus {
+      border: 1px solid #00DE81;
+    }
+
+    /* Нижній блок кнопок */
+    .checkout {
+      background: #1B012B;
+      padding: 15px 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .btn-pay {
+      background: #00DE81;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 15px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s;
+      font-family: 'Montserrat';
+      margin-bottom: 8px;
+    }
+    .btn-pay:hover {
+      background: #00c372;
+    }
+
+    .btn-alt {
+      background: #fff;
+      color: #283D81;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 15px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.2s;
+      font-family: 'Montserrat';
+    }
+    .btn-alt:hover {
+      background: #f3f3f3;
+    }
+    .btn-alt img {
+      height: 18px;
+    }
+
+    .btn-back {
+      text-align: center;
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    .btn-back:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <div class="header">
+      <h2>Payment</h2>
+      <iconify-icon icon="icons8:bank-card" style="font-size:24px; color:#888;"></iconify-icon>
+    </div>
+
+    <div class="form-section">
+      <label>Cardholder Name</label>
+      <input type="text" placeholder="John Doe">
+
+      <label>Card Number</label>
+      <input type="text" maxlength="19" placeholder="1234 5678 9012 3456">
+
+      <label>Expiration Date</label>
+      <input type="text" placeholder="MM/YY">
+
+      <label>CVV</label>
+      <input type="text" maxlength="3" placeholder="123">
+    </div>
+
+    <div class="checkout">
+      <!-- Кнопки без переходу на інші сторінки -->
+      <button class="btn-pay">Pay Now</button>
+
+      <button class="btn-alt">
+        <strong>Pay with</strong>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal">
+      </button>
+
+<a href="file:///C:/Users/vikto/OneDrive/%D0%A0%D0%BE%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D1%96%D0%BB/%D0%A2%D1%83%D1%88%D0%B8%D1%87%20%D0%92%D1%96%D0%BA%D1%82%D0%BE%D1%80%D1%96%D1%8F.html" class="btn-back">
+  <iconify-icon icon="icons8:arrows-long-left" style="font-size:14px; vertical-align:middle;"></iconify-icon>
+  Back to Shopping Cart
+</a>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
+     

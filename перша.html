@@ -1,0 +1,365 @@
+<!DOCTYPE html> 
+<html lang="uk"> 
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>Shopping Cart</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script> 
+
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        padding: 20px 10px;
+        margin: 0;
+      }
+
+      .cart-container {
+        width: 400px;
+        height: 700px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .header h2 {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .header iconify-icon:first-child {
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+     
+      .cart-icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 6px; 
+      }
+
+      .cart-icon iconify-icon {
+        font-size: 22px;
+        color: #333;
+      }
+
+      .cart-badge {
+        background: #ff4200;
+        color: white;
+        border-radius: 50%;
+        font-size: 12px;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+      }
+
+      .items {
+        padding: 15px 20px 130px;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .items::-webkit-scrollbar { display: none; }
+
+      .item {
+        display: flex;
+        align-items: center;
+        background: #fafafa;
+        border-radius: 10px;
+        padding: 10px 20px 10px 10px;
+        margin-bottom: 12px;
+      }
+
+      .thumb {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        margin-right: 20px;
+        object-fit: cover;
+      }
+
+      .details { flex: 1; }
+
+      .details h3 {
+        font-size: 14px;
+        margin: 0 0 1px;
+        font-weight: 600;
+      }
+
+      .details small {
+        color: #888;
+        font-size: 8px;
+        font-weight: 550;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6px;
+      }
+
+      .price {
+        color: #ff4d00;
+        border: 3px solid #ff4d00;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .qty {
+        display: flex;
+        align-items: center;
+        gap: 0.3px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: -20px;
+        transform: translateY(-10px);
+      }
+
+      .qty span {
+        font-size: 13px;
+        font-weight: 600;
+        min-width: 15px;
+        text-align: center;
+        position: relative;
+        top: -5px;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .qty button {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .qty button:hover { transform: scale(1.1); }
+      .qty button:active { transform: scale(0.95); }
+
+      .qty iconify-icon {
+        font-size: 30px;
+        color: #333;
+        display: block;
+        position: relative;
+        margin-top: -12px;
+      }
+
+      .voucher {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        font-weight: 550;
+      }
+
+      .voucher input {
+        flex: 1;
+        height: 49px;
+        border-radius: 10px;
+        border: 2px solid #fff;
+        background: #210F33;
+        color: white;
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        outline: none;
+      }
+
+      .voucher .total {
+        flex: 1;
+        background: #ff4200;
+        height: 49px;
+        border-radius: 10px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+      }
+
+      .checkout {
+        position: sticky;
+        bottom: 0;
+        background: #1B012B;
+        padding: 15px 20px;
+        color: white;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        font-family: 'Montserrat';
+      }
+
+      .checkout button {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        height: 58px;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 12px;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: 0.2s;
+        font-family: 'Montserrat';
+      }
+
+      .btn-main {
+        background: #00DE81;
+        color: #fff;
+      }
+
+      .btn-main:hover { background: #00DE81; }
+
+      .btn-checkoutwith:hover {
+        background: #f3f3f3;
+        border-radius: 10px;
+      }
+
+      .btn-checkoutwith {
+        background: #fff;
+        color: #283D81;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: 'Montserrat';
+      }
+
+      .btn-checkoutwith img { height: 18px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="cart-container">
+      <div class="header">
+        <iconify-icon icon="ci:chevron-left-md"></iconify-icon>
+        <h2>Shopping Cart</h2>
+
+        <div class="cart-icon">
+          <iconify-icon icon="heroicons-outline:shopping-bag"></iconify-icon>
+          <div class="cart-badge">5</div>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="item">
+          <img class="thumb" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYZuZLaT2lj6PtZWr9Me1r__aAIHAnQXtylNrQwXmJodgxPwAY3SO_YZ0-3dzdVCM3HvOcEi04n6BE_n7f1f24rOO1Eb8E30lgcfkvMVrwqvNB-P1Ylu8rm7osDyQY4RyUdQJP26wUMdE/s1600/ILCE-7RM2_wFE35F14Z_right_cr.jpg" alt="Video Camera">
+          <div class="details">
+            <h3>Video Camera</h3>
+            <small>Code #247890</small>
+            <div class="price-row">
+              <div class="price">$849.90</div>
+              <div class="qty">
+                <button class="minus"><iconify-icon icon="ci:remove-minus-circle"></iconify-icon></button>
+                <span class="count">1</span>
+                <button class="plus"><iconify-icon icon="ci:add-plus-circle"></iconify-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="thumb" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/13070145/sony-original-walkman-tps-l2.0.1406747932.jpg" alt="Walkman">
+          <div class="details">
+            <h3>Walkman</h3>
+            <small>Code #367381</small>
+            <div class="price-row">
+              <div class="price">$249.90</div>
+              <div class="qty">
+                <button class="minus"><iconify-icon icon="ci:remove-minus-circle"></iconify-icon></button>
+                <span class="count">2</span>
+                <button class="plus"><iconify-icon icon="ci:add-plus-circle"></iconify-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="thumb" src="https://m.media-amazon.com/images/I/81kmxc1jmKL.jpg" alt="Turntable">
+          <div class="details">
+            <h3>Turntable</h3>
+            <small>Code #589001</small>
+            <div class="price-row">
+              <div class="price">$1449.90</div>
+              <div class="qty">
+                <button class="minus"><iconify-icon icon="ci:remove-minus-circle"></iconify-icon></button>
+                <span class="count">4</span>
+                <button class="plus"><iconify-icon icon="ci:add-plus-circle"></iconify-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="thumb" src="https://cdn11.bigcommerce.com/s-j27eiuk7/images/stencil/1280x1280/products/208/906/Alphanumeric_Pager__54459.1594835922.jpg?c=2" alt="Pager">
+          <div class="details">
+            <h3>Pager</h3>
+            <small>Code #567190</small>
+            <div class="price-row">
+              <div class="price">$99.90</div>
+              <div class="qty">
+                <button class="minus"><iconify-icon icon="ci:remove-minus-circle"></iconify-icon></button>
+                <span class="count">2</span>
+                <button class="plus"><iconify-icon icon="ci:add-plus-circle"></iconify-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout">
+        <div class="voucher">
+          <input type="text" placeholder="VOUCHER CODE">
+          <div class="total">TOTAL : $ 2649.60</div>
+        </div>
+
+        <button class="btn-main" onclick="window.location.href='///C:/Users/vikto/OneDrive/%D0%A0%D0%BE%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%20%D1%81%D1%82%D1%96%D0%BB/%D0%B4%D1%80%D1%83%D0%B3%D0%B0.html'">Checkout</button>
+
+        <button class="btn-checkoutwith" type="button">
+          <strong>Checkout with</strong>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" alt="PayPal Logo">
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+
