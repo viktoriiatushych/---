@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <style>
+        /* Застосування шрифту та глобальні налаштування */
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0;
+            background-color: #fff; 
+        }
+        
+        /* Приховати скролбар для секції форми */
+        .form-section::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Визначення власного кольору hover для кнопки Pay Now: #00c372 */
+        .btn-pay:hover {
+            background-color: #00c372; 
+        }
+
+        /* Власний колір hover для кнопки Back: #fff */
+        .btn-back:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body class="h-screen"> 
+
+    <!-- Payment Container - Повна ширина, повна висота, без тіні та зовнішнього заокруглення -->
+    <div class="payment-container bg-white w-full h-full flex flex-col overflow-hidden">
+        
+        <!-- Header: [20px]->px-5, [15px]->py-4, [15px]->text-base, [24px]->text-2xl -->
+        <div class="flex justify-between items-center px-5 py-4 border-b border-[#eee]">
+            <h2 class="text-base font-semibold m-0">Payment</h2>
+            <iconify-icon icon="icons8:bank-card" class="text-2xl text-[#888]"></iconify-icon>
+        </div>
+
+        <!-- Form Section - Scrollable content -->
+        <!-- Додано pb-[180px], щоб вміст форми не перекривався фіксованим футером -->
+        <div class="form-section p-5 flex-1 overflow-y-auto pb-[180px]">
+            
+            <!-- Labels & Inputs: [13px]->text-sm, [6px]->mb-1.5, [20px]->mb-5, [10px]->rounded-xl -->
+
+            <label class="block text-sm font-semibold text-[#333] mb-1.5">Cardholder Name</label>
+            <input 
+                type="text" 
+                placeholder="John Doe"
+                class="w-full p-3 mb-5 rounded-xl border border-[#ddd] text-sm outline-none transition-all duration-200 focus:border-[#00DE81]"
+            >
+
+            <label class="block text-sm font-semibold text-[#333] mb-1.5">Card Number</label>
+            <input 
+                type="text" 
+                maxlength="19" 
+                placeholder="1234 5678 9012 3456"
+                class="w-full p-3 mb-5 rounded-xl border border-[#ddd] text-sm outline-none transition-all duration-200 focus:border-[#00DE81]"
+            >
+
+            <div>
+                <label class="block text-sm font-semibold text-[#333] mb-1.5">Expiration Date</label>
+                <input 
+                    type="text" 
+                    placeholder="MM/YY"
+                    class="w-full p-3 mb-5 rounded-xl border border-[#ddd] text-sm outline-none transition-all duration-200 focus:border-[#00DE81]"
+                >
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-[#333] mb-1.5">CVV</label>
+                <input 
+                    type="text" 
+                    maxlength="3" 
+                    placeholder="123"
+                    class="w-full p-3 mb-5 rounded-xl border border-[#ddd] text-sm outline-none transition-all duration-200 focus:border-[#00DE81]"
+                >
+            </div>
+
+        </div>
+
+        <!-- Checkout Bar - Нижня заокруглена панель (заокруглено лише зверху) -->
+        <!-- py-[15px]->py-4, rounded-t-[20px]->rounded-t-2xl -->
+        <div class="checkout bg-[#1B012B] px-5 py-4 rounded-t-2xl w-full absolute bottom-0">
+            
+            <!-- Pay Now Button: text-[16px]->text-base, p-[15px]->p-4, rounded-[10px]->rounded-xl -->
+            <button class="btn-pay bg-[#00DE81] text-white border-none rounded-xl font-semibold text-base p-4 cursor-pointer w-full transition-colors duration-200 mb-2">
+                Pay Now
+            </button>
+
+            <!-- Pay with PayPal Button: text-[16px]->text-base, p-[15px]->p-4, rounded-[10px]->rounded-xl -->
+            <button class="bg-white text-[#283D81] rounded-xl font-semibold text-base p-4 cursor-pointer w-full mt-2 flex items-center justify-center gap-2 transition-colors duration-200 hover:bg-[#f3f3f3]">
+                <strong>Pay with</strong>
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" 
+                    alt="PayPal" 
+                    class="h-[18px]"
+                >
+            </button>
+
+            <!-- Back Link: text-[13px]->text-sm, mt-[10px]->mt-2.5, text-[14px]->text-sm -->
+            <a href="версія tailwind.html" class="btn-back text-center block text-[#ccc] no-underline text-sm mt-2.5 transition-colors duration-200">
+                <iconify-icon icon="icons8:arrows-long-left" class="text-sm align-middle"></iconify-icon>
+                Back to Shopping Cart
+            </a>
+
+        </div>
+    </div>
+</body>
+</html>

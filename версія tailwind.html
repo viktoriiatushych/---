@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Налаштування для шрифту Montserrat */
+        body { font-family: 'Montserrat', sans-serif; } 
+
+        /* Сховати скролбар для списку товарів та body */
+        .items { overflow-y: auto; }
+        .items::-webkit-scrollbar { display: none; }
+        body::-webkit-scrollbar { display: none; }
+        html, body { overflow: hidden; }
+
+        /* Налаштування для кнопок кількості */
+        .qty-control button {
+            all: unset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .qty-control button:hover { transform: scale(1.1); }
+        .qty-control button:active { transform: scale(0.95); }
+
+        .qty-control iconify-icon {
+            /* Розмір іконки */
+            font-size: 30px; 
+            color: #333;
+        }
+
+        .qty-control .count {
+            /* Стилі для лічильника */
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 15px;
+            text-align: center;
+            position: relative;
+            /* Зменшено зміщення */
+            top: -3px; 
+        }
+    </style>
+</head>
+
+<body class="overflow-hidden h-screen font-[Montserrat] bg-white">
+
+    <div class="cart-container h-screen bg-white rounded-none shadow-none flex flex-col overflow-hidden">
+
+        <div class="flex justify-between items-center px-5 py-4 border-b border-[#eee]">
+                        <iconify-icon icon="ci:chevron-left-md" class="text-3xl cursor-pointer"></iconify-icon>
+
+            <h2 class="text-base font-semibold m-0">Shopping Cart</h2>
+
+            <div class="relative flex items-center gap-1.5 cursor-pointer">
+                <iconify-icon icon="heroicons-outline:shopping-bag" class="text-2xl text-[#333]"></iconify-icon>
+                <div class="w-4 h-4 bg-[#ff4200] text-white rounded-full text-xs flex items-center justify-center font-semibold">
+                    5
+                </div>
+            </div>
+        </div>
+
+        <div class="items flex-1 overflow-y-auto px-5 pt-4 pb-4">
+
+                        <div class="flex items-center bg-[#fafafa] rounded-lg p-2.5 pr-5 pl-2.5 mb-3">
+                <img class="w-12 h-12 rounded-lg mr-5 object-cover"
+                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYZuZLaT2lj6PtZWr9Me1r__aAIHAnQXtylNrQwXmJodgxPwAY3SO_YZ0-3dzdVCM3HvOcEi04n6BE_n7f1f24rOO1Eb8E30lgcfkvMVrwqvNB-P1Ylu8rm7osDyQY4RyUdQJP26wUMdE/s1600/ILCE-7RM2_wFE35F14Z_right_cr.jpg">
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold m-0 mb-px">Video Camera</h3>
+                    <small class="text-gray-500 text-xs font-semibold block">Code #247890</small>
+
+                    <div class="flex justify-between items-start mt-1.5">
+                        <div class="text-[#ff4d00] border-2 border-[#ff4d00] rounded-lg px-2 py-1 font-semibold text-sm leading-none">
+                            $849.90
+                        </div>
+
+                        <div class="qty-control flex items-center gap-px text-xs font-semibold">
+                            <button class="minus">
+                                <iconify-icon icon="ci:remove-minus-circle"></iconify-icon>
+                            </button>
+                            <span class="count">1</span>
+                            <button class="plus">
+                                <iconify-icon icon="ci:add-plus-circle"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="flex items-center bg-[#fafafa] rounded-lg p-2.5 pr-5 pl-2.5 mb-3">
+                <img class="w-12 h-12 rounded-lg mr-5 object-cover"
+                     src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/13070145/sony-original-walkman-tps-l2.0.1406747932.jpg">
+
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold m-0 mb-px">Walkman</h3>
+                    <small class="text-gray-500 text-xs font-semibold block">Code #367381</small>
+
+                    <div class="flex justify-between items-start mt-1.5">
+                        <div class="text-[#ff4d00] border-2 border-[#ff4d00] rounded-lg px-2 py-1 font-semibold text-sm leading-none">
+                            $249.90
+                        </div>
+
+                        <div class="qty-control flex items-center gap-px text-sm font-semibold">
+                            <button class="minus">
+                                <iconify-icon icon="ci:remove-minus-circle"></iconify-icon>
+                            </button>
+                            <span class="count">2</span>
+                            <button class="plus">
+                                <iconify-icon icon="ci:add-plus-circle"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="flex items-center bg-[#fafafa] rounded-lg p-2.5 pr-5 pl-2.5 mb-3">
+                <img class="w-12 h-12 rounded-lg mr-5 object-cover"
+                     src="https://m.media-amazon.com/images/I/81kmxc1jmKL.jpg">
+
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold m-0 mb-px">Turntable</h3>
+                    <small class="text-gray-500 text-xs font-semibold block">Code #589001</small>
+
+                    <div class="flex justify-between items-start mt-1.5">
+                        <div class="text-[#ff4d00] border-2 border-[#ff4d00] rounded-lg px-2 py-1 font-semibold text-sm leading-none">
+                            $1449.90
+                        </div>
+
+                        <div class="qty-control flex items-center gap-px text-sm font-semibold">
+                            <button class="minus">
+                                <iconify-icon icon="ci:remove-minus-circle"></iconify-icon>
+                            </button>
+                            <span class="count">4</span>
+                            <button class="plus">
+                                <iconify-icon icon="ci:add-plus-circle"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="flex items-center bg-[#fafafa] rounded-lg p-2.5 pr-5 pl-2.5 mb-3">
+                <img class="w-12 h-12 rounded-lg mr-5 object-cover"
+                     src="https://cdn11.bigcommerce.com/s-j27eiuk7/images/stencil/1280x1280/products/208/906/Alphanumeric_Pager__54459.1594835922.jpg?c=2">
+
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold m-0 mb-px">Pager</h3>
+                    <small class="text-gray-500 text-xs font-semibold block">Code #567190</small>
+
+                    <div class="flex justify-between items-start mt-1.5">
+                        <div class="text-[#ff4d00] border-2 border-[#ff4d00] rounded-lg px-2 py-1 font-semibold text-sm leading-none">
+                            $99.90
+                        </div>
+
+                        <div class="qty-control flex items-center gap-px text-sm font-semibold">
+                            <button class="minus">
+                                <iconify-icon icon="ci:remove-minus-circle"></iconify-icon>
+                            </button>
+                            <span class="count">2</span>
+                            <button class="plus">
+                                <iconify-icon icon="ci:add-plus-circle"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-[#1B012B] px-5 py-4 text-white rounded-t-xl sticky bottom-0">
+            <div class="flex gap-2.5 mb-2.5">
+                <input
+                    type="text"
+                    placeholder="VOUCHER CODE"
+                    class="flex-1 h-12 bg-[#210F33] border-2 border-white rounded-lg text-center text-xs text-white outline-none placeholder-white placeholder-opacity-70 font-medium">
+
+                <div class="flex-1 h-12 bg-[#ff4200] text-white rounded-lg flex items-center justify-center font-semibold text-sm cursor-pointer">
+                    TOTAL : $ 2649.60
+                </div>
+            </div>
+
+            
+            <button class="w-full h-14 bg-[#00DE81] text-white rounded-lg text-base font-semibold mt-2 transition-colors duration-200 hover:bg-[#00c372]"
+                onclick="window.location.href='версія tailwind друга сторінка.html'"
+            >
+                Checkout
+            </button>
+
+  
+            <button class="w-full h-14 bg-white text-[#283D81] rounded-lg text-base font-semibold mt-2 flex items-center justify-center gap-2 transition-colors duration-200 hover:bg-[#f3f3f3]">
+                <strong>Checkout with</strong>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" class="h-5">
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+
